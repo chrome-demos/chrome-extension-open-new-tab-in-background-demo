@@ -1,21 +1,13 @@
 package example
 
-import chrome.tabs.QueryInfo
+import chrome.tabs.CreateProperties
 import kotlinjs.common.jsonAs
-import kotlin.browser.window
 
 fun main(args: Array<String>) {
-    getCurrentTabUrl { url ->
-        window.alert("current url is: $url")
+    chrome.tabs.create(jsonAs<CreateProperties>().apply {
+        url = "http://github.com"
+        active = false
+    }) { tab ->
+        console.log("Opened tab in background: ${tab.id}")
     }
 }
-
-private fun getCurrentTabUrl(callback: (String) -> Unit) {
-    chrome.tabs.query(jsonAs<QueryInfo>().apply {
-        active = true
-        currentWindow = true
-    }) { tabs ->
-        tabs.firstOrNull()?.url?.run(callback)
-    }
-}
-

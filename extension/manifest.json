@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Get url of current tag",
-  "description": "This extension will alert the url of current tag",
+  "name": "open-new-tab-in-background-demo",
+  "description": "open-new-tab-in-background-demo",
   "version": "1.0",
 
   "browser_action": {
